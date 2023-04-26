@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Piedra, Papel o Tijeras</title>
+    <link rel="stylesheet" href="Styles/styles.css">
+    <link rel="stylesheet" href="Styles/JavaScrit.js">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <header>
+        <nav>
+            <h1>¡Juego piedra papel o tijeras!</h1>
+          <ul>
+            <li><a href="reglas.html">Reglas</a></li>
+          </ul>
+        </nav>
+      </header>      
+
+    <br>
+    <br>
+<center>
+    <br>
+    <h2>ELIGE, ¡PIEDRA PAPEL O TIJERAS!</h2>
+    <div id="juego">
+      <img src="Assets/piedra.png" alt="Piedra" id="piedra" width="100" onclick="jugar('piedra')">
+      <img src="Assets/papel.png" alt="Papel" id="papel" width="100" onclick="jugar('papel')">
+      <img src="Assets/tijeras.png" alt="Tijeras" id="tijeras" width="100" onclick=" jugar('tijeras')">
+    </div>
+</center>
+
+    <div id="resultado"></div>
+
+    <script>
+      // Función para jugar contra la máquina
+      function jugar(opcion) {
+        // Generar una opción aleatoria para la máquina
+        var opcionesMaquina = ["piedra", "papel", "tijeras"];
+        var opcionMaquina = opcionesMaquina[Math.floor(Math.random() * opcionesMaquina.length)];
+        
+        // Mostrar las opciones elegidas
+        document.getElementById("resultado").innerHTML = "Tu elegiste " + opcion + ", la máquina eligió " + opcionMaquina + ".<br>";
+        
+        // Determinar el ganador
+        if (opcion == "piedra") {
+          if (opcionMaquina == "papel") {
+            document.getElementById("resultado").innerHTML += "¡PERDISTE! El papel envuelve a la piedra.";
+          } else if (opcionMaquina == "tijeras") {
+            document.getElementById("resultado").innerHTML += "¡GANASTE! La piedra rompe las tijeras.";
+          } else {
+            document.getElementById("resultado").innerHTML += "¡EMPATE! Ambos eligieron piedra.";
+          }
+        } else if (opcion == "papel") {
+          if (opcionMaquina == "tijeras") {
+            document.getElementById("resultado").innerHTML += "¡PERDISTE! Las tijeras cortan el papel.";
+          } else if (opcionMaquina == "piedra") {
+            document.getElementById("resultado").innerHTML += "¡GANASTE! El papel envuelve a la piedra.";
+          } else {
+            document.getElementById("resultado").innerHTML += "¡EMPATE! Ambos eligieron papel.";
+          }
+        } else if (opcion == "tijeras") {
+          if (opcionMaquina == "piedra") {
+            document.getElementById("resultado").innerHTML += "¡PERDISTE! La piedra rompe las tijeras.";
+          } else if (opcionMaquina == "papel") {
+            document.getElementById("resultado").innerHTML += "¡GANASTE! Las tijeras cortan el papel.";
+          } else {
+            document.getElementById("resultado").innerHTML += "¡EMPATE! Ambos eligieron tijeras.";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
